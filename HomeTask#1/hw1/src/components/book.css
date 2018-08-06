@@ -11,6 +11,7 @@ img {
 }
 
 .content {
+    overflow-x:hidden;
     margin: 10px;
 }
 

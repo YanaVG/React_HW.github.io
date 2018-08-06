@@ -34,6 +34,11 @@ export default class BookEditor extends Component {
     handleSubmit = evt => {
         evt.preventDefault();
 
+        let chechImg = this.state.imgLink;
+        if(chechImg.trim() === 0) {
+            return chechImg = "https://www.google.com.ua/search?q=book+cover&tbm=isch&tbo=u&source=univ&sa=X&ved=2ahUKEwjFiZONytjcAhXsFJoKHaizAikQsAR6BAgFEAE&biw=1440&bih=826#imgrc=lI_wjd2EHUilzM:"
+        }
+        // console.log(chechImg);
         this.props.onSubmit(this.state);
 
         this.setState({
@@ -46,7 +51,7 @@ export default class BookEditor extends Component {
 
     render() {
         const { title, imgLink, author, descr } = this.state;
-
+        // this.props.onSubmit(title, imgLink, author, descr)
         return (
             <form onSubmit={this.handleSubmit} className={styles.form}>
                 <label>
@@ -68,7 +73,7 @@ export default class BookEditor extends Component {
                     name="imgLink" 
                     value={imgLink}
                     onChange={this.handleChange}
-                    required
+                    // required
                     />
                 </label>
                 <label>
@@ -91,6 +96,7 @@ export default class BookEditor extends Component {
                     value={descr}
                     onChange={this.handleChange}
                     row="20"
+                    cols="20"
                     required
                     />
                 </label>

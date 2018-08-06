@@ -6,7 +6,7 @@ import styles from './book.css';
 const Book = ({ img, title, author, descr, onDelete}) => (
     <div className={styles.wrap}>
         <div>
-            <img src={img} alt={title} />
+            <img src={img} alt='film' />
         </div>
         <div className={styles.content}>
             <h2>{title}</h2>
