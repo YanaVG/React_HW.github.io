@@ -7,21 +7,21 @@ import styles from './book-editor.css';
 export default class BookEditor extends Component {
     static propTypes = {
         title: PropTypes.string,
-        imgLink: PropTypes.string,
+        img: PropTypes.string,
         author: PropTypes.string,
         descr: PropTypes.string
     };
 
     static defaultProps = {
         title: 'no title',
-        imgLink: 'no imgage link',
+        img: 'no imgage link',
         author: 'no author',
         descr: 'no description'
     }
 
     state = {
         title: '',
-        imgLink: '',
+        img: '',
         author: '',
         descr: '',
     };
@@ -34,24 +34,24 @@ export default class BookEditor extends Component {
     handleSubmit = evt => {
         evt.preventDefault();
 
-        let chechImg = this.state.imgLink;
-        if(chechImg.trim() === 0) {
-            return chechImg = "https://www.google.com.ua/search?q=book+cover&tbm=isch&tbo=u&source=univ&sa=X&ved=2ahUKEwjFiZONytjcAhXsFJoKHaizAikQsAR6BAgFEAE&biw=1440&bih=826#imgrc=lI_wjd2EHUilzM:"
-        }
-        // console.log(chechImg);
-        this.props.onSubmit(this.state);
+        const { title, img, author, descr } = this.state;
+        if(!img.trim()) {
+            const img = 'https://pixabay.com/en/book-stack-books-antiquariat-read-2915944/';
+            this.props.onSubmit( title, img, author, descr)
+        } else {
+            this.props.onSubmit( title, img, author, descr)
+        };
 
         this.setState({
             title: '',
-            imgLink: '',
+            img: '',
             author: '',
             descr: '',
         });
     };
 
     render() {
-        const { title, imgLink, author, descr } = this.state;
-        // this.props.onSubmit(title, imgLink, author, descr)
+        const { title, img, author, descr } = this.state;
         return (
             <form onSubmit={this.handleSubmit} className={styles.form}>
                 <label>
@@ -70,10 +70,9 @@ export default class BookEditor extends Component {
                     <input 
                     type="text"
                     placeholder="Write image link..." 
-                    name="imgLink" 
-                    value={imgLink}
+                    name="img" 
+                    value={img}
                     onChange={this.handleChange}
-                    // required
                     />
                 </label>
                 <label>

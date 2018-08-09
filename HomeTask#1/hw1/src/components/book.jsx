@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './button';
 import styles from './book.css';
 
-const Book = ({ img, title, author, descr, onDelete}) => (
+const Book = ({ img, title, author, descr, onDelete }) => (
     <div className={styles.wrap}>
         <div>
             <img src={img} alt='film' />
@@ -20,14 +20,14 @@ const Book = ({ img, title, author, descr, onDelete}) => (
 
 Book.propTypes = {
     title: PropTypes.string,
-    imgLink: PropTypes.string,
+    img: PropTypes.string,
     author: PropTypes.string,
     descr: PropTypes.string,
 };
 
 Book.defaultProps = {
     title: 'no title',
-    imgLink: 'no imgage link',
+    img: 'no imgage link',
     author: 'no author',
     descr: 'no description'
 };

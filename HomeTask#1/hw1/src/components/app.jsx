@@ -6,8 +6,7 @@ import Books from '../books.json';
 import SearchBar from './search-bar';
 import { getVisibleBooks } from './service/selectors';
 import styles from './app.css';
-// import imgCover from '../img/book-cover.png';
-// import styles from './book-editor.css';
+
 export default class App extends Component {
     state = {
         books: Books,
@@ -20,7 +19,7 @@ export default class App extends Component {
         }))
     };
 
-    addBook = ({ img, title, author, descr }) => {
+    addBook = ( img, title, author, descr ) => {
        const book = {
            id: v4(),
            title,
@@ -28,7 +27,7 @@ export default class App extends Component {
            author,
            descr,
        };
-       
+
        this.setState(prevState => ({
            books: [book, ...prevState.books]
        })) 

@@ -1,0 +1,7 @@
+.wrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    padding: 10px;
+    border: 2px solid  rgb(200, 200, 200);
+}
