@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import searchMovieById from '../../secvices/search-by-id';
-// import styles from './style.css';
+import styles from './style.css';
 
-// const URL = 'http://image.tmdb.org/t/p/w300';
+const URL = 'http://image.tmdb.org/t/p/w300';
 
 export default class ModalWindow extends Component {
     static propTypes = {
@@ -19,7 +19,12 @@ export default class ModalWindow extends Component {
         error: null
     };
 
-    handleSearchMovie = ({ id }) => {
+    componentDidMount() {
+        const { id } = this.props;
+        this.getMovieInfo({ id });
+    }
+
+    getMovieInfo = ({ id }) => {
         searchMovieById({
             id,
             onSuccess: this.handleFetchSuccess,
@@ -41,11 +46,9 @@ export default class ModalWindow extends Component {
         })
     };
 
-    
-
     render() {
         const { isOpen, toggleModal }  = this.props;
-        const {  error, isLoading } = this.state;
+        const {  error, isLoading, movie } = this.state;
         return(
             <Modal
                 open={isOpen}
@@ -57,7 +60,8 @@ export default class ModalWindow extends Component {
             { isLoading && <div>Loading...</div> }
 
             {!isLoading && (
-                <div>
+                <div className={styles.container}>
+                    <img src={`${URL}${movie.poster_path}`} alt={movie}/>
 
                 </div>
             )}
