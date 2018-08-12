@@ -15,7 +15,7 @@ export default class SearchBar extends Component {
     handleChange = e => {
         this.setState({ title: e.target.value })
         console.log(this.state.title);
-    }
+    };
 
     handleSubmit = e => {
         const { onSearch } = this.props;
@@ -26,25 +26,27 @@ export default class SearchBar extends Component {
         this.setState({
             title: ''
         });
-    }
-
+    };
 
     render() {
         const { title } = this.state;
 
         return (
             <form className={styles.wrap} onSubmit={this.handleSubmit}>
-                <input 
-                    type="text"
-                    placeholder="Enter movie title..." 
-                    value={title}
-                    onChange={this.handleChange}
-                    required 
+                <p className={styles.title}>Search by title</p>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Enter movie title..."
+                        value={title}
+                        onChange={this.handleChange}
+                        required
                     />
-                <Button  
-                    type="submit" 
-                    label="Search"
+                    <Button
+                        type="submit"
+                        label="Search"
                     />
+                </div>
             </form>
         )
     }

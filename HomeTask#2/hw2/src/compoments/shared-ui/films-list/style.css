@@ -1,8 +1,13 @@
-.grid {
+.film_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     margin: 0 auto;
-    padding: 16px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-    grid-gap: 16px;
+    padding-top: 16px;
   }
+  
+.film_item {
+    width: 24%;
+    margin-bottom: 10px;
+}

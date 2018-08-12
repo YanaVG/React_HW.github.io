@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import Film from '../film'
 import styles from './style.css';
 
-const FilmsList = ({ movies }) => (
-    <ul className={styles.grid}>
+const FilmsList = ({ movies, addMovie, btnAddTitle, btnInfoTitle }) => (
+    <ul className={styles.film_list}>
         {movies.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} className={styles.film_item}>
                 <Film 
-                date={movie.release_date}
-                overview={movie.overview}
-                img={movie.poster_path}
+                    {...movie} 
+                    addMovie={addMovie} 
+                    btnAddTitle={btnAddTitle} 
+                    btnInfoTitle={btnInfoTitle}
                 />
             </li>
         ))}
@@ -18,8 +19,10 @@ const FilmsList = ({ movies }) => (
 );
 
 FilmsList.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-
+    movies: PropTypes.arrayOf(Array).isRequired,
+    addMovie: PropTypes.func.isRequired,
+    btnAddTitle: PropTypes.string.isRequired,
+    btnInfoTitle: PropTypes.string.isRequired,
 };
 
 export default FilmsList;

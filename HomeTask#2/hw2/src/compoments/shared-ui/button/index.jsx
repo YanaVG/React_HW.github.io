@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 
 const Button = ({ label, onClick, active, type }) => (
-    <button className={active ? styles.active : styles.button} onClick={onClick} type={type}>
+    <button
+        className={active ? styles.active : styles.button}
+        onClick={onClick}
+        type={type}>
         {label}
     </button>
 );
@@ -19,7 +22,7 @@ Button.defaultProp = {
     label: 'btn',
     onClick: () => null,
     active: '',
-    type: 'submit' 
+    type: 'button' 
 };
 
 export default Button;
