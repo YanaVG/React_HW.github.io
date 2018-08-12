@@ -6,7 +6,7 @@ import MainSection from '../shared-ui/main-section';
 import PanelHeader from '../shared-ui/panel-header';
 import PanelSection from '../shared-ui/panel-section';
 import PanelWatchList from '../shared-ui/panel-watchList';
-// import ModalWindow from '../shared-ui/modal-window';
+import ModalWindow from '../shared-ui/modal-window';
 import CategorySelertor from '../shared-ui/category-selector';
 import selectorOption from '../selector-options';
 import { fetchByCategory, fetchByTitle } from '../secvices/api';
@@ -18,6 +18,8 @@ export default class App extends Component {
         category: null,
         watchList: [],
         title: '',
+        movieId: '',
+        isOpen: false,
         isLoading: false,
         error: null
     };
@@ -133,12 +135,20 @@ export default class App extends Component {
             watchList: prevState.watchList.filter(movie => movie.id !== id)
         }),
         () => this.setToLocalStorage()
-    );
+        );
     };
+
+    toggleModal = id => {
+        this.setState(prevState => ({
+            isOpen: !prevState.isOpen,
+            movieId: !prevState.isOpen ? null : id
+        })
+        );
+    } 
 
 
     render() {
-        const { movies, category, watchList } = this.state;
+        const { movies, category, watchList, isOpen, movieId } = this.state;
         return (
             <div className={styles.app}>
                 <PanelWatchList>
@@ -171,6 +181,14 @@ export default class App extends Component {
                         />
                     )}
                 </MainSection>
+                {isOpen && (
+                    <ModalWindow
+                        id={movieId}
+                        toggleModal={this.toggleModal}
+                        isOpen={isOpen}
+                    >
+                    </ModalWindow>
+                )}
             </div>
         );
     }
