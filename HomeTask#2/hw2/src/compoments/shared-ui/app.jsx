@@ -6,6 +6,7 @@ import MainSection from '../shared-ui/main-section';
 import PanelHeader from '../shared-ui/panel-header';
 import PanelSection from '../shared-ui/panel-section';
 import PanelWatchList from '../shared-ui/panel-watchList';
+// import ModalWindow from '../shared-ui/modal-window';
 import CategorySelertor from '../shared-ui/category-selector';
 import selectorOption from '../selector-options';
 import { fetchByCategory, fetchByTitle } from '../secvices/api';
@@ -17,7 +18,7 @@ export default class App extends Component {
         category: null,
         watchList: [],
         title: '',
-        loading: false,
+        isLoading: false,
         error: null
     };
 
@@ -79,12 +80,12 @@ export default class App extends Component {
     };
 
     handleFetchSuccess = movies => {
-        this.setState({movies, loading: false})
+        this.setState({movies, isLoading: false})
         console.log(movies);
     };
 
     handleFetchFailure = error => {
-        this.setState({ loading: false, error: error.massage})
+        this.setState({ isLoading: false, error: error.massage})
     };
 
     handleFetchMore = movies => {
@@ -94,7 +95,7 @@ export default class App extends Component {
     };
 
     handleFetch = () => {
-        this.setState({ loading: true, error: null})
+        this.setState({ isLoading: true, error: null})
     };
 
     changeCategory = category => {
