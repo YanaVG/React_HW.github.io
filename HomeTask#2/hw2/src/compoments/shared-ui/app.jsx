@@ -24,20 +24,12 @@ export default class App extends Component {
     error: null,
   };
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //     if(!this.state.category) return true;
-  //     const prevCategory = this.state.category.value;
-  //     const nextCategory = nextState.category.value;
-  //     const shouldUpdate = prevCategory !== nextCategory;
-  //     return shouldUpdate;
-  // };
   componentDidMount() {
     this.getFromLocalStorage();
   }
 
   componentDidUpdate(pevProps, prevState) {
     const { category } = this.state;
-
     if (!category) return;
 
     const prevCategory = prevState.category;
@@ -56,21 +48,34 @@ export default class App extends Component {
 
   setToLocalStorage = () => {
     const { watchList } = this.state;
-
     localStorage.setItem('list', JSON.stringify(watchList));
   };
 
   getFromLocalStorage = () => {
     const list = JSON.parse(localStorage.getItem('list'));
-
     if (!list) return;
-
     this.setState({ watchList: list });
+  };
+
+  fetchMoreMovies = numberPage => {
+    const { category } = this.state;
+    if (!category) return;
+    fetchByCategory({
+      numberPage: numberPage + 1,
+      category: category.value,
+      onSuccess: this.handleFetchMoreMovies,
+      onError: this.handleFetchFailure,
+    });
+  };
+
+  handleFetchMoreMovies = movies => {
+    this.setState(prevState => ({
+      movies: prevState.movies.concat(movies),
+    }));
   };
 
   handleFetchSuccess = movies => {
     this.setState({ movies });
-    // console.log(movies);
   };
 
   handleFetchFailure = error => {
@@ -89,7 +94,7 @@ export default class App extends Component {
     this.setState({ movies: [] });
     fetchByTitle({
       title,
-      onSuccess: this.handleFetchSuccess,
+      onSuccess: this.handleFetchMoreMovies,
       onError: this.handleFetchFailure,
     });
   };
@@ -158,6 +163,7 @@ export default class App extends Component {
               movies={movies}
               addMovie={this.addMovie}
               toggleModal={this.toggleModal}
+              fetchMoreMovies={this.fetchMoreMovies}
             />
           )}
         </MainSection>

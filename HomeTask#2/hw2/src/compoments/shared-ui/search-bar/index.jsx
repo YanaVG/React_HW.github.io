@@ -23,7 +23,7 @@ export default class SearchBar extends Component {
     const { title } = this.state;
     e.preventDefault();
 
-    onSearch({ title });
+    onSearch(title);
 
     this.setState({
       title: '',
