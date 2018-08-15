@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 
 const PanelHeader = ({ children }) => (
-    <div className={styles.container}>
-        {children}
-    </div>
+  <div className={styles.container}>{children}</div>
 );
 
 PanelHeader.propTypes = {
-    chidren: PropTypes.node
+  children: PropTypes.node.isRequired,
 };
 
 export default PanelHeader;

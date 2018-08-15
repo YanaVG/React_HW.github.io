@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 
 const PanelSection = ({ children }) => (
-    <div className={styles.panel_section}>
-        {children}
-    </div>
+  <div className={styles.panel_section}>{children}</div>
 );
 
 PanelSection.propTypes = {
-    chidren: PropTypes.node
+  children: PropTypes.node.isRequired,
 };
 
 export default PanelSection;

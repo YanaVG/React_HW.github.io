@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 
 const MainSection = ({ children }) => (
-    <div className={styles.container}>
-        {children}
-    </div>
+  <div className={styles.container}>{children}</div>
 );
 
 MainSection.propTypes = {
-    chidren: PropTypes.node
+  children: PropTypes.node.isRequired,
 };
 
 export default MainSection;
