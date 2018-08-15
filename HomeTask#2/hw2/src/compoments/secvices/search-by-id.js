@@ -8,10 +8,7 @@ const searchMovieById = ({ id, onSuccess, onError }) => {
 
   return axios
     .get(url)
-    .then(response => {
-      console.log('response.data', response.data);
-      return response.data;
-    })
+    .then(response => response.data)
     .then(onSuccess)
     .catch(onError);
 };
