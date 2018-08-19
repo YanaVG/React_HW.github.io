@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
+import Loader from 'react-loaders';
 import Film from '../film';
-import Loader from '../loader';
 import styles from './style.css';
 
 const FilmsList = ({ movies, addMovie, toggleModal, fetchMoreMovies }) => (
@@ -12,7 +12,12 @@ const FilmsList = ({ movies, addMovie, toggleModal, fetchMoreMovies }) => (
     hasMore
     loader={
       <div className={styles.loader} key={0}>
-        <Loader />
+        <Loader
+          type="ball-clip-rotate-multiple"
+          backgroundColor="#fff"
+          height={150}
+          width={150}
+        />
       </div>
     }
   >

@@ -11,3 +11,9 @@
     width: 24%;
     margin-bottom: 10px;
 }
+
+.loader {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}

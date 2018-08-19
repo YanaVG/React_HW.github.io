@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import searchMovieById from '../../secvices/search-by-id';
 import Loader from '../loader';
+import Icon from './icon';
+import ICONS from '../icons';
 import styles from './style.css';
 
 const URL = 'http://image.tmdb.org/t/p/w300';
@@ -48,25 +50,31 @@ export default class ModalWindow extends Component {
   };
 
   render() {
-    const { isOpen, toggleModal } = this.props;
+    const { isOpen, toggleModal, id } = this.props;
     const { error, isLoading, movie } = this.state;
-    // console.log('movie', movie);
-    // console.log('Date:', Date.now());
-    // console.log('isLoading', isLoading);
     return (
       <Modal
-        open={isOpen}
+        isOpen={isOpen}
         onClose={toggleModal}
+        shouldCloseOnOverlayClick
+        shouldCloseOnEsc
         center
-        className={styles.modals}
-        closeIconSvgPath={false}
-        closeIconSize={15}
+        className={styles.modal}
+        ariaHideApp={false}
+        shouldFocusAfterRender={false}
       >
         {error && <div>{error}</div>}
         {isLoading && <Loader />}
 
         {!isLoading && (
           <div className={styles.content}>
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={() => toggleModal(id)}
+            >
+              <Icon icon={ICONS.close} />
+            </button>
             <img
               className={styles.poster}
               src={`${URL}${movie.backdrop_path}`}
