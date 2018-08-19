@@ -1,0 +1,22 @@
+watch_list {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    padding: 10px;
+}
+
+.wrap_header {
+    margin: 25px 0 25px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid  rgba(0, 0, 0, 0.5);
+}
+.title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* .wrap_list { */
+    /* margin-right: 1em; */
+    /* padding: 10px; */
+/* } */

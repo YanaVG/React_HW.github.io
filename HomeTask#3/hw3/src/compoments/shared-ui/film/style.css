@@ -1,0 +1,90 @@
+ .film_item {
+    position: relative;
+    height: 450px;
+    padding: 16px;
+    line-height: 1;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+  
+.film_item  img {
+    width: 100%;
+    height: 314px;
+    object-fit: cover;
+}
+
+.releaseDate {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 16px 0 16px 0;
+}
+
+.voteAvaradge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    background-color: #2196f3;
+    border-radius: 0 0 10px 0;
+}
+
+.overview {
+    height: 58px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.wrap_button {
+    position: absolute;
+    left: 35%;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn_add,
+.btn_info {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.22);
+  padding: 7px;
+}
+.btn_add {
+    margin-right: 5px;
+}
+
+.btn_add:hover {
+  background-color: #f5f5f5;
+}
+
+.btn_info:hover {
+  background-color: #f5f5f5;
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+  fill: #bdbdbd;
+}
+
+.btn_add:hover .icon {
+  fill: black;
+  transition: 0.5s linear;
+}
+
+.btn_info:hover .icon {
+  fill: black;
+  transition: 0.5s linear;
+}
