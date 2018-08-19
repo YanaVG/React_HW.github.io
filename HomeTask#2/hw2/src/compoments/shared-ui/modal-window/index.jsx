@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import searchMovieById from '../../secvices/search-by-id';
+import getVideos from '../../secvices/get-videos';
+import Trailer from './trailer';
 import Loader from '../loader';
 import Icon from './icon';
 import ICONS from '../icons';
@@ -18,6 +20,7 @@ export default class ModalWindow extends Component {
 
   state = {
     movie: null,
+    videos: '',
     isLoading: true,
     error: null,
   };
@@ -33,25 +36,29 @@ export default class ModalWindow extends Component {
       onSuccess: this.handleFetchSuccess,
       onError: this.handleFetchFailure,
     });
+    getVideos({
+      id,
+      onSuccess: this.handleFetchVideo,
+      onError: this.handleFetchFailure,
+    });
+  };
+
+  handleFetchVideo = videos => {
+    this.setState({ videos });
   };
 
   handleFetchSuccess = movie => {
-    this.setState({
-      movie,
-      isLoading: false,
-    });
+    this.setState({ movie, isLoading: false });
   };
 
   handleFetchFailure = error => {
-    this.setState({
-      isLoading: false,
-      error,
-    });
+    this.setState({ error, isLoading: false });
   };
 
   render() {
     const { isOpen, toggleModal, id } = this.props;
-    const { error, isLoading, movie } = this.state;
+    const { error, isLoading, movie, videos } = this.state;
+    // console.log(video);
     return (
       <Modal
         isOpen={isOpen}
@@ -100,6 +107,9 @@ export default class ModalWindow extends Component {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div className={styles.trailer}>
+              <Trailer url={videos.key} />
             </div>
           </div>
         )}

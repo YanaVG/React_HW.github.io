@@ -1,10 +1,10 @@
 .modal {
     display: flex;
     position: fixed;
-    left: 30%;
+    left: 20%;
     top: 20%;
     height: 350px;
-    width: 600px;
+    width: 870px;
     padding: 10px;
     background-color: #fff;
     animation: open-modal 300ms ease-in;
@@ -64,7 +64,7 @@
 .closeButton {
     position: relative;
     top: -20px;
-    right: -600px;
+    right: -850px;
     cursor: pointer;
     outline: none;
     width: 25px;
@@ -82,6 +82,10 @@
   width: 12px;
   height: 12px;
   fill: #bdbdbd;
+}
+
+.trailer {
+  padding: 60px;
 }
   
   /* .modal-close {
