@@ -8,22 +8,22 @@ import PanelSection from './panel-section';
 import PanelWatchList from './panel-watchList';
 import CategorySelertor from './category-selector';
 import selectorOption from '../selector-options';
-import fetchByCategory from '../secvices/fetch-by-category';
-import fetchByTitle from '../secvices/fetch-by-title';
+// import fetchByCategory from '../secvices/fetch-by-category';
+// import fetchByTitle from '../secvices/fetch-by-title';
 import styles from './app.css';
 
 export default class App extends Component {
-  state = {
-    movies: [],
-    category: null,
-    watchList: [],
-    isOpen: false,
-    error: null,
-  };
+  // state = {
+  //   movies: [],
+  //   category: null,
+  //   watchList: [],
+  //   isOpen: false,
+  //   error: null,
+  // };
 
-  componentDidMount() {
-    this.getFromLocalStorage();
-  }
+  // componentDidMount() {
+  //   this.getFromLocalStorage();
+  // }
 
   componentDidUpdate(pevProps, prevState) {
     const { category } = this.state;
@@ -41,58 +41,58 @@ export default class App extends Component {
     }
   }
 
-  setToLocalStorage = () => {
-    const { watchList } = this.state;
-    localStorage.setItem('list', JSON.stringify(watchList));
-  };
+  // setToLocalStorage = () => {
+  //   const { watchList } = this.state;
+  //   localStorage.setItem('list', JSON.stringify(watchList));
+  // };
 
-  getFromLocalStorage = () => {
-    const list = JSON.parse(localStorage.getItem('list'));
-    if (!list) return;
-    this.setState({ watchList: list });
-  };
+  // getFromLocalStorage = () => {
+  //   const list = JSON.parse(localStorage.getItem('list'));
+  //   if (!list) return;
+  //   this.setState({ watchList: list });
+  // };
 
-  fetchMoreMovies = numberPage => {
-    const { category } = this.state;
-    if (!category) return;
-    fetchByCategory({
-      numberPage: numberPage + 1,
-      category: category.value,
-      onSuccess: this.handleFetchMoreMovies,
-      onError: this.handleFetchFailure,
-    });
-  };
+  // fetchMoreMovies = numberPage => {
+  //   const { category } = this.state;
+  //   if (!category) return;
+  //   fetchByCategory({
+  //     numberPage: numberPage + 1,
+  //     category: category.value,
+  //     onSuccess: this.handleFetchMoreMovies,
+  //     onError: this.handleFetchFailure,
+  //   });
+  // };
 
-  handleFetchMoreMovies = movies => {
-    this.setState(prevState => ({
-      movies: prevState.movies.concat(movies),
-    }));
-  };
+  // handleFetchMoreMovies = movies => {
+  //   this.setState(prevState => ({
+  //     movies: prevState.movies.concat(movies),
+  //   }));
+  // };
 
-  handleFetchSuccess = movies => {
-    this.setState({ movies });
-  };
+  // handleFetchSuccess = movies => {
+  //   this.setState({ movies });
+  // };
 
-  handleFetchFailure = error => {
-    this.setState({ error: error.massage });
-  };
+  // handleFetchFailure = error => {
+  //   this.setState({ error: error.massage });
+  // };
 
-  handleFetch = () => {
-    this.setState({ error: null });
-  };
+  // handleFetch = () => {
+  //   this.setState({ error: null });
+  // };
 
-  changeCategory = category => {
-    this.setState({ category });
-  };
+  // changeCategory = category => {
+  //   this.setState({ category });
+  // };
 
-  handleSearchMovie = title => {
-    this.setState({ movies: [] });
-    fetchByTitle({
-      title,
-      onSuccess: this.handleFetchMoreMovies,
-      onError: this.handleFetchFailure,
-    });
-  };
+  // handleSearchMovie = title => {
+  //   this.setState({ movies: [] });
+  //   fetchByTitle({
+  //     title,
+  //     onSuccess: this.handleFetchMoreMovies,
+  //     onError: this.handleFetchFailure,
+  //   });
+  // };
 
   addMovie = id => {
     const { movies, watchList } = this.state;
