@@ -1,6 +1,6 @@
 import { CHANGE_FILTER } from '../types';
 
-const initialState = '';
+const initialState = 100000;
 
 export default function filterReduser(state = initialState, { type, payload }) {
   switch (type) {

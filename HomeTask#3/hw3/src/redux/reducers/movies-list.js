@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import {
   ADD_TO_WATCHLIST,
   REMOVE_FROM_WATCHLIST,
@@ -6,83 +7,36 @@ import {
   SET_TO_LOCALSTORAGE,
 } from '../types';
 
-const initialState = {
-  items: [],
-  watchList: [],
-};
+// const initialState = {
+//   items: [],
+//   watchList: [],
+// };
 
-const itemsReducer = (state = initialState, { type, payload }) => {
+const items = (state = [], { type, payload }) => {
   switch (type) {
-    case ADD_TO_WATCHLIST:
-      return {
-        ...state,
-        watchList: [payload, ...state.watchList],
-      };
-    case REMOVE_FROM_WATCHLIST:
-      return {
-        ...state,
-        watchList: state.watchList.filter(item => item.id !== payload),
-      };
     case FETCH_MOVIES_SUCCESS:
-      return {
-        ...state,
-        items: payload,
-      };
+      return payload;
     case FETCH_MORE_MOVIES:
-      return {
-        ...state,
-        items: state.items.concat(payload),
-      };
-    case SET_TO_LOCALSTORAGE:
-      return {
-        ...state,
-        items: payload,
-      };
+      return state.concat(payload);
     default:
       return state;
   }
 };
 
-export default itemsReducer;
+const watchList = (state = [], { type, payload }) => {
+  switch (type) {
+    case ADD_TO_WATCHLIST:
+      return payload;
+    case REMOVE_FROM_WATCHLIST:
+      return [payload, ...state];
+    case SET_TO_LOCALSTORAGE:
+      return state.filter(item => item.id !== payload);
+    default:
+      return state;
+  }
+};
 
-// const items = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case FETCH_MOVIES_SUCCESS:
-//       return payload;
-//     default:
-//       return state;
-//   }
-// };
-
-// const loading = (state = false, { type }) => {
-//   switch (type) {
-//     case FETCH_MOVIES_REQUEST:
-//       return true;
-
-//     case FETCH_MOVIES_SUCCESS:
-//     case FETCH_MOVIES_FAILURE:
-//       return false;
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const error = (state = null, { type, payload }) => {
-//   switch (type) {
-//     case FETCH_MOVIES_REQUEST:
-//       return null;
-
-//     case FETCH_MOVIES_FAILURE:
-//       return payload;
-
-//     default:
-//       return state;
-//   }
-// };
-
-// export default combineReducers({
-//   items,
-//   loading,
-//   error,
-// });
+export default combineReducers({
+  items,
+  watchList,
+});
