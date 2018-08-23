@@ -1,5 +1,5 @@
-import fetchByCategory from '../compoments/secvices/fetch-by-category';
-import fetchByTitle from '../compoments/secvices/fetch-by-title';
+import fetchByCategory from '../secvices/fetch-by-category';
+import fetchByTitle from '../secvices/fetch-by-title';
 import {
   ADD_TO_WATCHLIST,
   REMOVE_FROM_WATCHLIST,

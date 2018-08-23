@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Icon from './icon';
 import ICONS from '../icons';
-import getItemById from '../../../helpers';
-import { addToWatchlist } from '../../../redux/actions';
-import { getAllMovies, getWatchList } from '../../../redux/selectors';
+import getItemById from '../../helpers';
+import { addToWatchlist } from '../../redux/actions';
+import { getAllMovies, getWatchList } from '../../redux/selectors';
 import styles from './style.css';
 
 const URL = 'http://image.tmdb.org/t/p/w300';

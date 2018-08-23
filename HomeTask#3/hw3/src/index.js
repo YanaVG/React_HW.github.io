@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import './index.css';
-import App from './compoments/shared-ui/app';
+import App from './compoments/app';
 import store from './redux/store';
 
 ReactDOM.render(

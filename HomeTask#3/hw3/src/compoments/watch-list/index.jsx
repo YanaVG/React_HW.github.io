@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WatchItem from '../watch-item';
 import styles from './style.css';
-import { getWatchList } from '../../../redux/selectors';
-import withRenderLog from '../../../hoc/withRenderLog';
+import { getWatchList } from '../../redux/selectors';
+import withRenderLog from '../../hoc/withRenderLog';
 
 const WatchList = ({ watchList }) => (
   <div className={styles.watch_list}>

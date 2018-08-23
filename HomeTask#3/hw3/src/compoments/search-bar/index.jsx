@@ -4,8 +4,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Icon from './icon';
 import ICONS from '../icons/index';
-import withRenderProp from '../../../hoc/withRenderLog';
-import { getMoviesByTitle } from '../../../redux/actions';
+import withRenderProp from '../../hoc/withRenderLog';
+import { getMoviesByTitle } from '../../redux/actions';
 import styles from './style.css';
 
 class SearchBar extends Component {
@@ -19,7 +19,6 @@ class SearchBar extends Component {
 
   handleChange = e => {
     this.setState({ title: e.target.value });
-    // console.log(this.state.title);
   };
 
   handleSubmit = e => {

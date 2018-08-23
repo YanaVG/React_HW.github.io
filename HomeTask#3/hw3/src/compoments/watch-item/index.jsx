@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ICONS from '../icons';
 import Icon from './icon';
-import { removeFromWatchlist } from '../../../redux/actions';
+import { removeFromWatchlist } from '../../redux/actions';
 import styles from './style.css';
 
 const URL = 'http://image.tmdb.org/t/p/w300';

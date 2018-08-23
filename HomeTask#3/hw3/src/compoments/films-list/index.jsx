@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import Loader from 'react-loaders';
 import Film from '../film';
 import styles from './style.css';
-import { getMoreMovies } from '../../../redux/actions';
+import { getMoreMovies } from '../../redux/actions';
 
 class FilmsList extends Component {
   static propTypes = {
