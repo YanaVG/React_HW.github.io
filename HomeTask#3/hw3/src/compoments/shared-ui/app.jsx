@@ -11,6 +11,7 @@ import PanelSection from './panel-section';
 import PanelWatchList from './panel-watchList';
 import CategorySelertor from './category-selector';
 import selectorOption from '../selector-options';
+import getAllMovies from '../../redux/selectors';
 // import fetchByCategory from '../secvices/fetch-by-category';
 // import fetchByTitle from '../secvices/fetch-by-title';
 import styles from './app.css';
@@ -168,7 +169,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies,
+  movies: getAllMovies(state),
 });
 const mapDispatchToProps = { getMoviesByCategory, setState: setToLocalStorage };
 
