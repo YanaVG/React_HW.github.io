@@ -19,7 +19,7 @@ import styles from './app.css';
 class App extends Component {
   static propTypes = {
     movies: PropTypes.arrayOf(Array).isRequired,
-    getMovies: PropTypes.func.isRequired,
+    getMoviesByCategory: PropTypes.func.isRequired,
     setState: PropTypes.func.isRequired,
   };
 
@@ -33,14 +33,14 @@ class App extends Component {
 
   componentDidUpdate(pevProps, prevState) {
     const { category } = this.state;
-    const { getMovies = getMoviesByCategory } = this.props;
+    const { getMoviesByCategory: fetchMovies } = this.props;
     if (!category) return;
 
     const prevCategory = prevState.category;
     const nextCategory = category;
 
     if (prevCategory !== nextCategory) {
-      getMovies({
+      fetchMovies({
         category: nextCategory.value,
       });
     }
@@ -146,16 +146,11 @@ class App extends Component {
               />
             </PanelSection>
             <PanelSection>
-              <SearchBar onSearch={this.handleSearchMovie} />
+              <SearchBar />
             </PanelSection>
           </PanelHeader>
           {movies.length > 0 && (
-            <FilmsList
-              movies={movies}
-              addMovie={this.addMovie}
-              toggleModal={this.toggleModal}
-              fetchMoreMovies={this.fetchMoreMovies}
-            />
+            <FilmsList movies={movies} category={category} />
           )}
         </MainSection>
       </div>
