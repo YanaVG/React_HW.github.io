@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getMoviesByCategory, setToLocalStorage } from '../../redux/actions';
 import WatchList from './watch-list';
 import FilmsList from './films-list';
 import SearchBar from './search-bar/index';
@@ -12,45 +15,42 @@ import selectorOption from '../selector-options';
 // import fetchByTitle from '../secvices/fetch-by-title';
 import styles from './app.css';
 
-export default class App extends Component {
-  // state = {
-  //   movies: [],
-  //   category: null,
-  //   watchList: [],
-  //   isOpen: false,
-  //   error: null,
-  // };
+class App extends Component {
+  static propTypes = {
+    movies: PropTypes.arrayOf(Array).isRequired,
+    getMovies: PropTypes.func.isRequired,
+    setState: PropTypes.func.isRequired,
+  };
 
-  // componentDidMount() {
-  //   this.getFromLocalStorage();
-  // }
+  state = {
+    category: null,
+  };
+
+  componentDidMount() {
+    this.getFromLocalStorage();
+  }
 
   componentDidUpdate(pevProps, prevState) {
     const { category } = this.state;
+    const { getMovies = getMoviesByCategory } = this.props;
     if (!category) return;
 
     const prevCategory = prevState.category;
     const nextCategory = category;
 
     if (prevCategory !== nextCategory) {
-      fetchByCategory({
+      getMovies({
         category: nextCategory.value,
-        onSuccess: this.handleFetchSuccess,
-        onError: this.handleFetchFailure,
       });
     }
   }
 
-  // setToLocalStorage = () => {
-  //   const { watchList } = this.state;
-  //   localStorage.setItem('list', JSON.stringify(watchList));
-  // };
-
-  // getFromLocalStorage = () => {
-  //   const list = JSON.parse(localStorage.getItem('list'));
-  //   if (!list) return;
-  //   this.setState({ watchList: list });
-  // };
+  getFromLocalStorage = () => {
+    const { setState } = this.props;
+    const list = JSON.parse(localStorage.getItem('list'));
+    if (!list) return;
+    setState(list);
+  };
 
   // fetchMoreMovies = numberPage => {
   //   const { category } = this.state;
@@ -81,9 +81,9 @@ export default class App extends Component {
   //   this.setState({ error: null });
   // };
 
-  // changeCategory = category => {
-  //   this.setState({ category });
-  // };
+  changeCategory = category => {
+    this.setState({ category });
+  };
 
   // handleSearchMovie = title => {
   //   this.setState({ movies: [] });
@@ -127,7 +127,9 @@ export default class App extends Component {
   };
 
   render() {
-    const { movies, category, watchList, error } = this.state;
+    // const { movies, category, watchList, error } = this.state;
+    const { movies } = this.props;
+    const { category } = this.state;
     return (
       <div className={styles.app}>
         {error && <div>error</div>}
@@ -164,3 +166,13 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  movies: state.movies,
+});
+const mapDispatchToProps = { getMoviesByCategory, setState: setToLocalStorage };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

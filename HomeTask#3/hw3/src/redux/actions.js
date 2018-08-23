@@ -10,7 +10,7 @@ import {
   SET_TO_LOCALSTORAGE,
   CHANGE_FILTER,
 } from './types';
- 
+
 export const addToWatchlist = movie => ({
   type: ADD_TO_WATCHLIST,
   payload: movie,
@@ -25,7 +25,7 @@ export const setToLocalStorage = watchList => ({
   type: SET_TO_LOCALSTORAGE,
   payload: watchList,
 });
-  
+
 export const changeFilter = value => ({
   type: CHANGE_FILTER,
   payload: value,
@@ -45,7 +45,7 @@ const fetchMoreMovies = movies => ({
   payload: movies,
 });
 
-const fetchMoviesFailure = () => ({
+const fetchMoviesFailure = error => ({
   type: FETCH_MOVIES_FAILURE,
   payload: error,
 });
@@ -55,21 +55,21 @@ export const getMoviesByCategory = category => dispatch => {
 
   fetchByCategory(category)
     .then(movies => dispatch(fetchMoviesSuccess(movies)))
-    .catch(err => dispatch(fetchMoviesFailure(err)))
+    .catch(err => dispatch(fetchMoviesFailure(err)));
 };
 
 export const getMoviesByTitle = title => dispatch => {
-  dispatch(fetchByCategoryRequest());
- 
+  dispatch(fetchMoviesRequest());
+
   fetchByTitle(title)
     .then(movies => dispatch(fetchMoviesSuccess(movies)))
-    .catch(err => dispatch(fetchMoviesFailure(err)))
+    .catch(err => dispatch(fetchMoviesFailure(err)));
 };
 
 export const getMoreMovies = category => dispatch => {
-    dispatch(fetchByCategoryRequest());
-   
-    fetchByTitle(category)
-      .then(movies => dispatch(fetchMoreMovies(movies)))
-      .catch(err => dispatch(fetchMoviesFailure(err)))
-  };
+  dispatch(fetchMoviesRequest());
+
+  fetchByTitle(category)
+    .then(movies => dispatch(fetchMoreMovies(movies)))
+    .catch(err => dispatch(fetchMoviesFailure(err)));
+};
