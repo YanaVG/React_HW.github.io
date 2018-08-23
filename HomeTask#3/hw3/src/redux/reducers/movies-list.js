@@ -7,11 +7,6 @@ import {
   SET_TO_LOCALSTORAGE,
 } from '../types';
 
-// const initialState = {
-//   items: [],
-//   watchList: [],
-// };
-
 const items = (state = [], { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES_SUCCESS:
@@ -26,11 +21,11 @@ const items = (state = [], { type, payload }) => {
 const watchList = (state = [], { type, payload }) => {
   switch (type) {
     case ADD_TO_WATCHLIST:
-      return payload;
-    case REMOVE_FROM_WATCHLIST:
       return [payload, ...state];
-    case SET_TO_LOCALSTORAGE:
+    case REMOVE_FROM_WATCHLIST:
       return state.filter(item => item.id !== payload);
+    case SET_TO_LOCALSTORAGE:
+      return payload;
     default:
       return state;
   }
