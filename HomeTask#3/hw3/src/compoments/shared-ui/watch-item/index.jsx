@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ICONS from '../icons';
 import Icon from './icon';
+import { removeFromWatchlist } from '../../../redux/actions';
 import styles from './style.css';
 
 const URL = 'http://image.tmdb.org/t/p/w300';
@@ -13,7 +15,6 @@ const WatchItem = ({
   poster_path: posterPath,
   vote_average: voteAvaradge,
   onDelete,
-  toggleModal,
 }) => (
   <div className={styles.watch_item}>
     <div className={styles.wrap_img}>
@@ -35,7 +36,7 @@ const WatchItem = ({
           <button
             type="button"
             className={styles.btn_info}
-            onClick={() => toggleModal(id)}
+            // onClick={() => toggleModal(id)}
           >
             <Icon icon={ICONS.info} />
           </button>
@@ -52,7 +53,7 @@ WatchItem.propTypes = {
   poster_path: PropTypes.string,
   vote_average: PropTypes.number,
   onDelete: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  // toggleModal: PropTypes.func.isRequired,
 };
 
 WatchItem.defaultProps = {
@@ -63,4 +64,11 @@ WatchItem.defaultProps = {
   vote_average: 'no average vote',
 };
 
-export default WatchItem;
+const mapDispatchToProp = {
+  onDelete: removeFromWatchlist,
+};
+
+export default connect(
+  null,
+  mapDispatchToProp,
+)(WatchItem);

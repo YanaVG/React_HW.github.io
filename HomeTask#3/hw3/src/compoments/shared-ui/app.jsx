@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getMoviesByCategory, setToLocalStorage } from '../../redux/actions';
 import WatchList from './watch-list';
 import FilmsList from './films-list';
 import SearchBar from './search-bar/index';
@@ -9,9 +8,10 @@ import MainSection from './main-section';
 import PanelHeader from './panel-header';
 import PanelSection from './panel-section';
 import PanelWatchList from './panel-watchList';
-import CategorySelertor from './category-selector';
+import CategorySelector from './category-selector';
 import selectorOption from '../selector-options';
-import getAllMovies from '../../redux/selectors';
+import { getAllMovies } from '../../redux/selectors';
+import { getMoviesByCategory, setToLocalStorage } from '../../redux/actions';
 // import fetchByCategory from '../secvices/fetch-by-category';
 // import fetchByTitle from '../secvices/fetch-by-title';
 import styles from './app.css';
@@ -95,56 +95,51 @@ class App extends Component {
   //   });
   // };
 
-  addMovie = id => {
-    const { movies, watchList } = this.state;
+  // addMovie = id => {
+  //   const { movies, watchList } = this.state;
 
-    const dublicateMovie = watchList.find(movie => movie.id === id);
-    if (dublicateMovie) return;
+  //   const dublicateMovie = watchList.find(movie => movie.id === id);
+  //   if (dublicateMovie) return;
 
-    const selectMovie = movies.find(movie => movie.id === id);
+  //   const selectMovie = movies.find(movie => movie.id === id);
 
-    this.setState(
-      prevState => ({
-        watchList: [selectMovie, ...prevState.watchList],
-      }),
-      () => this.setToLocalStorage(),
-    );
-  };
+  //   this.setState(
+  //     prevState => ({
+  //       watchList: [selectMovie, ...prevState.watchList],
+  //     }),
+  //     () => this.setToLocalStorage(),
+  //   );
+  // };
 
-  deleteMovie = id => {
-    this.setState(
-      prevState => ({
-        watchList: prevState.watchList.filter(movie => movie.id !== id),
-      }),
-      () => this.setToLocalStorage(),
-    );
-  };
+  // deleteMovie = id => {
+  //   this.setState(
+  //     prevState => ({
+  //       watchList: prevState.watchList.filter(movie => movie.id !== id),
+  //     }),
+  //     () => this.setToLocalStorage(),
+  //   );
+  // };
 
-  toggleModal = id => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-      movieId: prevState.isOpen ? null : id,
-    }));
-  };
+  // toggleModal = id => {
+  //   this.setState(prevState => ({
+  //     isOpen: !prevState.isOpen,
+  //     movieId: prevState.isOpen ? null : id,
+  //   }));
+  // };
 
   render() {
-    // const { movies, category, watchList, error } = this.state;
     const { movies } = this.props;
     const { category } = this.state;
     return (
       <div className={styles.app}>
-        {error && <div>error</div>}
+        {/* {error && <div>error</div>} */}
         <PanelWatchList>
-          <WatchList
-            watchList={watchList}
-            onDelete={this.deleteMovie}
-            toggleModal={this.toggleModal}
-          />
+          <WatchList />
         </PanelWatchList>
         <MainSection>
           <PanelHeader>
             <PanelSection>
-              <CategorySelertor
+              <CategorySelector
                 options={selectorOption}
                 value={category}
                 onChange={this.changeCategory}
