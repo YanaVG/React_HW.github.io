@@ -1,0 +1,19 @@
+.film_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 16px;
+  }
+  
+.film_item {
+    width: 24%;
+    margin-bottom: 10px;
+}
+
+.loader {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
