@@ -1,5 +1,5 @@
-import fetchByCategory from '../secvices/fetch-by-category';
-import fetchByTitle from '../secvices/fetch-by-title';
+import getMovies from '../secvices/get-movies';
+import fetchByTitle from '../secvices/search-by-title';
 import {
   ADD_TO_WATCHLIST,
   REMOVE_FROM_WATCHLIST,
@@ -53,7 +53,7 @@ const fetchMoviesFailure = error => ({
 export const getMoviesByCategory = category => dispatch => {
   dispatch(fetchMoviesRequest());
 
-  fetchByCategory(category)
+  getMovies(category)
     .then(movies => dispatch(fetchMoviesSuccess(movies)))
     .catch(err => dispatch(fetchMoviesFailure(err)));
 };
