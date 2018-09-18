@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 import * as routes from '../../constants/routes';
 import styles from './style.css';
 
-const Navigation = () => (<div></div>);
+const Navigation = () => <PublicLinks />
+// auth.currentUser() ? <PrivateLinks /> : <PublicLinks />;
 
 const PrivateLinks = () => (
 <ul className={styles.Nav}>
