@@ -46,7 +46,7 @@ class App extends Component {
 
   getFromLocalStorage = () => {
     const { setState } = this.props;
-    const list = JSON.parse(localStorage.getItem('list'));
+    const list = JSON.parse(localStorage.getItem('watchList'));
     if (!list) return;
     setState(list);
   };
