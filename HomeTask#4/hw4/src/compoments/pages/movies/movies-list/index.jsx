@@ -7,7 +7,7 @@ import Film from '../film';
 import styles from './style.css';
 import { getMoreMovies } from '../../redux/actions';
 
-class FilmsList extends Component {
+class MoviesList extends Component {
   static propTypes = {
     movies: PropTypes.arrayOf(Array).isRequired,
     category: PropTypes.objectOf(Object),
@@ -58,4 +58,4 @@ const mapDispatchToProps = { fetchMoreMovies: getMoreMovies };
 export default connect(
   null,
   mapDispatchToProps,
-)(FilmsList);
+)(MoviesList);

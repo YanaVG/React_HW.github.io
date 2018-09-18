@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import WatchList from '../watch-list';
-import FilmsList from '../films-list';
-import SearchBar from '../search-bar/index';
-import MainSection from '../main-section';
-import PanelHeader from '../panel-header';
-import PanelSection from '../panel-section';
-import PanelWatchList from '../panel-watchList';
-import CategorySelector from '../category-selector';
-import selectorOption from '../../selector-options';
+// import WatchList from '../pages/watchlist/index';
+// import FilmsList from '../pages/movies/films-list';
+// import SearchBar from '../search-bar/index';
+// import MainSection from '../main-section';
+// import PanelHeader from '../panel-header';
+// import PanelSection from '../panel-section';
+// import PanelWatchList from '../panel-watchList';
+// import CategorySelector from '../category-selector';
+// import selectorOption from '../../compoments/pages/movies/selectors/selector-options';
 import { getAllMovies } from '../../redux/selectors';
 import { getMoviesByCategory, setToLocalStorage } from '../../redux/actions';
 import styles from './style.css';
 
 class App extends Component {
   static propTypes = {
-    movies: PropTypes.arrayOf(Array).isRequired,
+    // movies: PropTypes.arrayOf(Array).isRequired,
     getMoviesByCategory: PropTypes.func.isRequired,
     setState: PropTypes.func.isRequired,
   };
@@ -56,12 +56,12 @@ class App extends Component {
   };
 
   render() {
-    const { movies } = this.props;
-    const { category } = this.state;
+    // const { movies } = this.props;
+    // const { category } = this.state;
     return (
       <div className={styles.app}>
         {/* {error && <div>error</div>} */}
-        <PanelWatchList>
+        {/* <PanelWatchList>
           <WatchList />
         </PanelWatchList>
         <MainSection>
@@ -80,7 +80,7 @@ class App extends Component {
           {movies.length > 0 && (
             <FilmsList movies={movies} category={category} />
           )}
-        </MainSection>
+        </MainSection> */}
       </div>
     );
   }

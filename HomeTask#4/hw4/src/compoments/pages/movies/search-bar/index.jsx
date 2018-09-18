@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Icon from './icon';
-import ICONS from '../icons/index';
+import ICONS from '../shared-ui/icons';
 import withRenderProp from '../../hoc/withRenderLog';
 import { getMoviesByTitle } from '../../redux/actions';
 import styles from './style.css';
