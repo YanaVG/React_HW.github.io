@@ -14,18 +14,18 @@ const MovieCard = ({
   vote_average: voteAvarage,
   onClose,
 }) => (
-      <div className={styles.film_item}>
-        <img src={`${URL}${posterPath}`} alt={title} />
-        <div className={styles.info}>
-          <p className={styles.releaseDate}>{releaseDate}</p>
-          <p className={styles.voteAvarage}>{voteAvarage}</p>
-          <p className={styles.overview}>{overview}</p>
-          <MovieCardPanel id={id} onClose={onClose}/>
-        </div>
-      </div>
+  <div className={styles.film_item}>
+    <img src={`${URL}${posterPath}`} alt={title} />
+    <div className={styles.info}>
+      <p className={styles.releaseDate}>{releaseDate}</p>
+      <p className={styles.voteAvarage}>{voteAvarage}</p>
+      <p className={styles.overview}>{overview}</p>
+      <MovieCardPanel id={id} onClose={onClose} />
+    </div>
+  </div>
 );
 
-MovieCard.PropTypes = {
+MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,

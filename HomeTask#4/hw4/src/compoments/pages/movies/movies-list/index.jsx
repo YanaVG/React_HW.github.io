@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import Loader from 'react-loaders';
-import Film from '../film';
+import MovieCard from '../movie-card';
 import styles from './style.css';
-import { getMoreMovies } from '../../redux/actions';
+import { getMoreMovies } from '../../../../redux/actions';
 
 class MoviesList extends Component {
+  state = {
+    isOpen: false,
+  };
+
   static propTypes = {
     movies: PropTypes.arrayOf(Array).isRequired,
-    category: PropTypes.objectOf(Object),
+    category: PropTypes.string,
     fetchMoreMovies: PropTypes.func.isRequired,
   };
 
@@ -23,8 +27,16 @@ class MoviesList extends Component {
     fetchMoreMovies({ category: category.value, pageNum: pageNum + 1 });
   };
 
+  handleToggle = () => {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }));
+  };
+
   render() {
-    const { movies } = this.props;
+    const { movies, category } = this.props;
+    console.log(movies);
+    console.log(category);
     return (
       <InfiniteScroll
         pageStart={0}
@@ -44,7 +56,7 @@ class MoviesList extends Component {
         <ul className={styles.film_list}>
           {movies.map(movie => (
             <li key={movie.id} className={styles.film_item}>
-              <Film {...movie} />
+              <MovieCard {...movie} onClose={this.handleToggle} />
             </li>
           ))}
         </ul>

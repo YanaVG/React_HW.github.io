@@ -12,7 +12,7 @@ class WatchList extends Component {
   // state = { isOpen: false };
 
   componentDidMount() {
-    this.setToLocalStorage();
+    setToLocalStorage();
   }
 
   render() {
@@ -36,7 +36,7 @@ class WatchList extends Component {
 }
 
 WatchList.propTypes = {
-  watchList: PropTypes.arrayOf(Array).isRequired,
+  watchlist: PropTypes.arrayOf(Array).isRequired,
   setState: PropTypes.func.isRequired,
 };
 

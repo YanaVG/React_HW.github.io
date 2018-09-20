@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 // import PanelWatchList from '../panel-watchList';
 // import CategorySelector from '../category-selector';
 // import selectorOption from '../../compoments/pages/movies/selectors/selector-options';
+// import WatchList from '../pages/watchlist/index';
+import MovieCardPanel from '../pages/movies/index';
 import { getAllMovies } from '../../redux/selectors';
 import { getMoviesByCategory, setToLocalStorage } from '../../redux/actions';
 import styles from './style.css';
@@ -56,31 +58,10 @@ class App extends Component {
   };
 
   render() {
-    // const { movies } = this.props;
-    // const { category } = this.state;
     return (
       <div className={styles.app}>
-        {/* {error && <div>error</div>} */}
-        {/* <PanelWatchList>
-          <WatchList />
-        </PanelWatchList>
-        <MainSection>
-          <PanelHeader>
-            <PanelSection>
-              <CategorySelector
-                options={selectorOption}
-                value={category}
-                onChange={this.changeCategory}
-              />
-            </PanelSection>
-            <PanelSection>
-              <SearchBar />
-            </PanelSection>
-          </PanelHeader>
-          {movies.length > 0 && (
-            <FilmsList movies={movies} category={category} />
-          )}
-        </MainSection> */}
+        {/* <WatchList /> */}
+        <MovieCardPanel />
       </div>
     );
   }

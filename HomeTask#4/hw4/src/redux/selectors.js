@@ -11,5 +11,5 @@ export const getAllMoviesWithCurrentGenre = createSelector(
   (movies, filter) =>
     filter === 100000
       ? movies
-      : movies.filter(item => item.gente_ids.includes(filter)),
+      : movies.filter(item => item.genre_ids.includes(filter)),
 );

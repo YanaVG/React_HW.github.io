@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { getAllMovies } from '../../../redux/selectors';
+import { getAllMovies } from '../../../redux/selectors';
 import { getMoviesByCategory } from '../../../redux/actions';
 import { getCategoryFromProps } from '../../../helpers';
-import { getAllMoviesWithCurrentGenre } from '../../../redux/selectors';
+// import { getAllMoviesWithCurrentGenre } from '../../../redux/selectors';
 import * as routes from '../../../constants/routes';
 import MoviesList from './movies-list';
 import SearchBar from './search-bar';
 import SearchPanel from './search-panel';
 import CategorySelector from './category-selector';
 import MainSection from './main-section';
-
 
 class MoviesPage extends Component {
   static propTypes = {
@@ -29,7 +28,7 @@ class MoviesPage extends Component {
   componentDidMount() {
     const category = getCategoryFromProps(this.props);
     const { getMovies: fetchMovies } = this.props;
-    if(!category) return;
+    if (!category) return;
     fetchMovies({ category });
   }
 
@@ -37,8 +36,8 @@ class MoviesPage extends Component {
     const { getMovies: fetchMovies } = this.props;
     const prevCategory = getCategoryFromProps(prevProps);
     const nextCategory = getCategoryFromProps(this.props);
-    if(!nextCategory) return;
-    if(prevCategory === nextCategory) return;
+    if (!nextCategory) return;
+    if (prevCategory === nextCategory) return;
     fetchMovies({ category: nextCategory });
   }
 
@@ -60,26 +59,28 @@ class MoviesPage extends Component {
     return (
       <MainSection>
         <SearchPanel>
-          <CategorySelector 
-             value={currentCategory}
-             onChange={this.onChangeCategory}
+          <CategorySelector
+            value={currentCategory}
+            onChange={this.onChangeCategory}
           />
           {/* <MoviesFilter /> */}
           <SearchBar />
         </SearchPanel>
-        {movies.length > 0 && <MoviesList movies={movies} category={category} />}
+        {movies.length > 0 && (
+          <MoviesList movies={movies} category={category} />
+        )}
       </MainSection>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
-    // movies: getAllMovies(state),
-    movies: getAllMoviesWithCurrentGenre(state),
-  });
-  
-const mapDispatchToProps = { getMovies:  getMoviesByCategory};
-  
+  movies: getAllMovies(state),
+  // movies: getAllMoviesWithCurrentGenre(state),
+});
+
+const mapDispatchToProps = { getMovies: getMoviesByCategory };
+
 export default compose(
   withRouter,
   connect(

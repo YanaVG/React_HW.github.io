@@ -6,11 +6,7 @@ import styles from './style.css';
 const CategorySelector = props => (
   <div className={styles.block}>
     <p className={styles.title}>Search by category</p>
-    <Select 
-      className={styles.select}
-      options={selectorOptions}
-      {...props}
-    />
+    <Select className={styles.select} options={selectorOptions} {...props} />
   </div>
 );
 export default CategorySelector;

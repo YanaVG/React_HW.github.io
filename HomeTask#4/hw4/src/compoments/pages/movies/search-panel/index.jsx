@@ -6,7 +6,7 @@ const SearchPanel = ({ children }) => (
   <div className={styles.search_panel}>{children}</div>
 );
 
-MainSection.propTypes = {
+SearchPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
