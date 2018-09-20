@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import Icon from './icon';
-import ICONS from '../../../shared-ui/icons';
+// import Icon from './icon';
+// import ICONS from '../../../shared-ui/icons';
+import SearchButton from '../../../shared-ui/buttons/search-button';
 import withRenderProp from '../../../../hoc/withRenderLog';
 import { getMoviesByTitle } from '../../../../redux/actions';
 import styles from './style.css';
@@ -38,8 +39,8 @@ class SearchBar extends Component {
 
     return (
       <form className={styles.wrap} onSubmit={this.handleSubmit}>
-        <p className={styles.title}>Search by title</p>
-        <div>
+        <h5>Search by title</h5>
+        <div className={styles.panel}>
           <input
             type="text"
             placeholder="Enter movie title..."
@@ -47,9 +48,7 @@ class SearchBar extends Component {
             onChange={this.handleChange}
             required
           />
-          <button type="submit" className={styles.btn_search}>
-            <Icon icon={ICONS.search} />
-          </button>
+          <SearchButton />
         </div>
       </form>
     );
