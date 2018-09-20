@@ -15,12 +15,12 @@ const styles = () => ({
 });
 
 const AddButton = ({ classes, onClick }) => (
-  <Tooltip tittle="Add movie to watchlist" TransitionComponent={Zoom}>
+  <Tooltip title="Add movie to watchlist" TransitionComponent={Zoom}>
     <Button
       variant="fab"
       color="primary"
       className={classes.button}
-      onClick={onClick} 
+      onClick={onClick}
     >
       <AddIcon />
     </Button>
@@ -29,7 +29,7 @@ const AddButton = ({ classes, onClick }) => (
 
 AddButton.propTypes = {
   classes: PropTypes.objectOf(Object).isRequired,
-  onClick: PropTypes.function.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(AddButton);

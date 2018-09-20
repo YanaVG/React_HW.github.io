@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter, NavLink } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import AddButton from '../../../shared-ui/buttons/add-button';
+import InfoButton from '../../../shared-ui/buttons/info-button';
 import { addToWatchlist } from '../../../../redux/actions';
 import { getAllMovies, getWatchList } from '../../../../redux/selectors';
 import { getItemById } from '../../../../helpers';
 import * as routes from '../../../../constants/routes';
-import Icon from './icon';
-import ICONS from '../../../shared-ui/icons';
+// import Icon from './icon';
+// import ICONS from '../../../shared-ui/icons';
 import styles from './style.css';
 
 class MovieCardPanel extends Component {
@@ -37,13 +39,7 @@ class MovieCardPanel extends Component {
     // console.log(movie);
     return (
       <div className={styles.movie_panel}>
-        <Button
-          type="button"
-          className={styles.btn_add}
-          onClick={() => this.addCardToList(id)}
-        >
-          <Icon icon={ICONS.add} />
-        </Button>
+        <AddButton onClick={() => this.addCardToList(id)} />
         <NavLink
           to={{
             pathname: `${routes.MOVIES}/${id}`,
@@ -51,9 +47,7 @@ class MovieCardPanel extends Component {
             state: { from: location },
           }}
         >
-          <Button type="button" className={styles.btn_info}>
-            <Icon icon={ICONS.info} />
-          </Button>
+          <InfoButton />
         </NavLink>
       </div>
     );
@@ -70,7 +64,7 @@ MovieCardPanel.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  watchList: getWatchList(state),
+  watchlist: getWatchList(state),
   movies: getAllMovies(state),
 });
 

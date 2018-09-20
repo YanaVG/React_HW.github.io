@@ -14,12 +14,8 @@ const styles = () => ({
 });
 
 const InfoButton = ({ classes }) => (
-  <Tooltip tittle="Get more information" TransitionComponent={Zoom}>
-    <Button
-      variant="fab"
-      color="default"
-      className={classes.button}
-    >
+  <Tooltip title="Get more information" TransitionComponent={Zoom}>
+    <Button variant="fab" color="default" className={classes.button}>
       <InfoIcon />
     </Button>
   </Tooltip>

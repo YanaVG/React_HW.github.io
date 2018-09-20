@@ -14,7 +14,7 @@ const styles = () => ({
 });
 
 const SearchButton = ({ classes }) => (
-  <Tooltip tittle="Search movie by title" TransitionComponent={Zoom}>
+  <Tooltip title="Search movie by title" TransitionComponent={Zoom}>
     <Button
       type="submit"
       variant="fab"

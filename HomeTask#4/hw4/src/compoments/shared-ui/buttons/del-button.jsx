@@ -16,7 +16,7 @@ const styles = () => ({
 });
 
 const DelButton = ({ classes, onClick }) => (
-  <Tooltip tittle="Delete movie" TransitionComponent={Zoom}>
+  <Tooltip title="Delete movie" TransitionComponent={Zoom}>
     <Button
       variant="fab"
       color="secondary"
