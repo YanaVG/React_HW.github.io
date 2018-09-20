@@ -3,33 +3,31 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
-import AddIcon from '@material-ui/icons/Add';
+import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   button: {
-    marginRight: 5,
     width: 36,
     height: 36,
   },
 });
 
-const AddButton = ({ classes, onClick }) => (
-  <Tooltip tittle="Add movie to watchlist" TransitionComponent={Zoom}>
+const SearchButton = ({ classes }) => (
+  <Tooltip tittle="Search movie by title" TransitionComponent={Zoom}>
     <Button
+      type="submit"
       variant="fab"
-      color="primary"
+      color="default"
       className={classes.button}
-      onClick={onClick} 
     >
-      <AddIcon />
+      <SearchIcon />
     </Button>
   </Tooltip>
 );
 
-AddButton.propTypes = {
+SearchButton.propTypes = {
   classes: PropTypes.objectOf(Object).isRequired,
-  onClick: PropTypes.function.isRequired,
 };
 
-export default withStyles(styles)(AddButton);
+export default withStyles(styles)(SearchButton);

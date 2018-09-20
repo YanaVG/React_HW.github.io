@@ -13,11 +13,21 @@ import ICONS from '../../../shared-ui/icons';
 import styles from './style.css';
 
 class MovieCardPanel extends Component {
-  state = {};
+  state = {
+    isOpen: false,
+  };
+
+  handleToggle = () => {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }));
+  };
 
   addCardToList(id) {
-    const { movies, addCart, onClose } = this.props;
-    // if (getItemById(watchList, id)) return;
+    const { movies, watchlist, addCart, onClose } = this.props;
+    if (getItemById(watchlist, id)) {
+      return this.handleToggle();
+    }
     addCart(getItemById(movies, id));
     return onClose();
   }
@@ -53,7 +63,7 @@ class MovieCardPanel extends Component {
 MovieCardPanel.propTypes = {
   id: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(Array).isRequired,
-  // watchList: PropTypes.arrayOf(Array).isRequired,
+  watchlist: PropTypes.arrayOf(Array).isRequired,
   location: PropTypes.objectOf(Object).isRequired,
   addCart: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
