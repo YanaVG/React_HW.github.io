@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter, NavLink } from 'react-router-dom';
-// import Button from '@material-ui/core/Button';
 import AddButton from '../../../shared-ui/buttons/add-button';
 import InfoButton from '../../../shared-ui/buttons/info-button';
+import SnackBarError from '../../../shared-ui/info-panels/error';
 import { addToWatchlist } from '../../../../redux/actions';
 import { getAllMovies, getWatchList } from '../../../../redux/selectors';
 import { getItemById } from '../../../../helpers';
@@ -36,6 +36,7 @@ class MovieCardPanel extends Component {
 
   render() {
     const { id, location } = this.props;
+    const { isOpen } = this.state;
     // console.log(movie);
     return (
       <div className={styles.movie_panel}>
@@ -49,6 +50,11 @@ class MovieCardPanel extends Component {
         >
           <InfoButton />
         </NavLink>
+        <SnackBarError
+          text="Movie has already existed in your Watchlist"
+          open={isOpen}
+          close={this.handleToggle}
+        />
       </div>
     );
   }

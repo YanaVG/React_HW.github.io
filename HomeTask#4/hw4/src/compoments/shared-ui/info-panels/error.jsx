@@ -26,26 +26,26 @@ const styles = theme => ({
 
 const SnackBarError = ({ text, classes, open, close }) => (
   <Portal>
-      <SnackBar
-        className={classes.snackbar}
-        anchorOrigin={{
-           vertical: 'top',
-           horizontal: 'center'
-        }}
-        open={open}
-        onClose={close}
-        autoHideDuration={1500}
-      >
-        <SnackBarContent
-          className={classes.error}
-          message={
-            <div className={claases.message}>
-              <ErrorIcon className={classes.icon}/>
-              {text}
-            </div>
-          }
-        />
-      </SnackBar>
+    <SnackBar
+      className={classes.snackbar}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      open={open}
+      onClose={close}
+      autoHideDuration={1500}
+    >
+      <SnackBarContent
+        className={classes.error}
+        message={
+          <div className={classes.message}>
+            <ErrorIcon className={classes.icon} />
+            {text}
+          </div>
+        }
+      />
+    </SnackBar>
   </Portal>
 );
 
@@ -54,6 +54,6 @@ SnackBarError.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   classes: PropTypes.objectOf(Object).isRequired,
-}
+};
 
 export default withStyles(styles)(SnackBarError);
