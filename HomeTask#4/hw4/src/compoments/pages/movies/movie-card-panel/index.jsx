@@ -37,7 +37,6 @@ class MovieCardPanel extends Component {
   render() {
     const { id, location } = this.props;
     const { isOpen } = this.state;
-    // console.log(movie);
     return (
       <div className={styles.movie_panel}>
         <AddButton onClick={() => this.addCardToList(id)} />

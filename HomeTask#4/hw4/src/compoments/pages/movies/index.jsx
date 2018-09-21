@@ -11,6 +11,7 @@ import * as routes from '../../../constants/routes';
 import MoviesList from './movies-list';
 import SearchBar from './search-bar';
 import SearchPanel from './search-panel';
+import MoviesFilter from './movie-filter-genre';
 import CategorySelector from './category-selector';
 import MainSection from './main-section';
 
@@ -63,7 +64,7 @@ class MoviesPage extends Component {
             value={currentCategory}
             onChange={this.onChangeCategory}
           />
-          {/* <MoviesFilter /> */}
+          <MoviesFilter />
           <SearchBar />
         </SearchPanel>
         {movies.length > 0 && (
