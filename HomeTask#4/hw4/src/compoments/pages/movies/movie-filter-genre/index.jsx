@@ -46,6 +46,7 @@ class MoviesFilter extends Component {
   render() {
     const { value } = this.state;
     const { classes } = this.props;
+    console.log(value);
     return (
       <div className={styles.filter_panel}>
         <h5>Filter by genre</h5>

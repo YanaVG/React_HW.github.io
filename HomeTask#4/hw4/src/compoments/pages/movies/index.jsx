@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getAllMovies } from '../../../redux/selectors';
+// import { getAllMovies } from '../../../redux/selectors';
 import { getMoviesByCategory } from '../../../redux/actions';
 import { getCategoryFromProps } from '../../../helpers';
-// import { getAllMoviesWithCurrentGenre } from '../../../redux/selectors';
+import { getAllMoviesWithCurrentGenre } from '../../../redux/selectors';
 import * as routes from '../../../constants/routes';
 import MoviesList from './movies-list';
 import SearchBar from './search-bar';
@@ -76,8 +76,8 @@ class MoviesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: getAllMovies(state),
-  // movies: getAllMoviesWithCurrentGenre(state),
+  // movies: getAllMovies(state),
+  movies: getAllMoviesWithCurrentGenre(state),
 });
 
 const mapDispatchToProps = { getMovies: getMoviesByCategory };
