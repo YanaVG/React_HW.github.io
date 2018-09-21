@@ -18,7 +18,7 @@ const AddButton = ({ classes, onClick }) => (
   <Tooltip title="Add movie to watchlist" TransitionComponent={Zoom}>
     <Button
       variant="fab"
-      color="primary"
+      color="secondary"
       className={classes.button}
       onClick={onClick}
     >

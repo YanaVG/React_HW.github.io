@@ -12,7 +12,7 @@ import { getItemById } from '../../../../helpers';
 import * as routes from '../../../../constants/routes';
 // import Icon from './icon';
 // import ICONS from '../../../shared-ui/icons';
-import styles from './style.css';
+import styles from '../movie-card/style.css';
 
 class MovieCardPanel extends Component {
   state = {
@@ -38,7 +38,7 @@ class MovieCardPanel extends Component {
     const { id, location } = this.props;
     const { isOpen } = this.state;
     return (
-      <div className={styles.movie_panel}>
+      <div className={styles.add_btn_panel}>
         <AddButton onClick={() => this.addCardToList(id)} />
         <NavLink
           to={{
