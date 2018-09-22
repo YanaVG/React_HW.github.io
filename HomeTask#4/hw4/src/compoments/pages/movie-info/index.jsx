@@ -12,7 +12,7 @@ import styles from './style.css';
 
 const IMG_BASE = `https://image.tmdb.org/t/p/w500/`;
 
-export default class MovieInfo extends Component {
+class MovieInfo extends Component {
   static propTypes = {
       match: PropTypes.objectOf(Object).isRequired,
   };
@@ -25,6 +25,7 @@ export default class MovieInfo extends Component {
       loading: true,
       error: null,
   };
+
   componentDidMount() {
       const id = this.getIdFromProps();
       this.getMovieInfo({ id });
@@ -138,7 +139,7 @@ export default class MovieInfo extends Component {
                         <div>
                             <h4 className={styles.headers}>Movie screenshots</h4>
                             <div className={styles.slider_container}>
-                              <ImageSlider images={images} />
+                              <ImagesSlider images={images} />
                             </div>
                         </div>
                       )}
@@ -156,4 +157,7 @@ export default class MovieInfo extends Component {
           </div>
         );
     }
-} 
+}
+
+
+export default MovieInfo;
