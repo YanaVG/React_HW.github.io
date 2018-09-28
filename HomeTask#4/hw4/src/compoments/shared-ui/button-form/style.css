@@ -1,0 +1,13 @@
+.button {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form_button {
+  width: 100%;
+  min-height: 30px;
+  padding: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: #bfc1c2;
+}
