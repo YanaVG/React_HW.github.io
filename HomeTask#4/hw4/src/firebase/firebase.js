@@ -11,8 +11,8 @@ const consfig = {
   messagingSenderId: '232348098303',
 };
 
-if(!firebase.apps.length) {
-    firebase.initializeApp(consfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(consfig);
 }
 
 export const auth = firebase.auth();

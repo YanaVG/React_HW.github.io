@@ -21,7 +21,7 @@ const PrivateLinks = () => (
           activeClassName="Nav-link-active"
         >
           Home
-    </NavLink>
+        </NavLink>
       </li>
       <li>
         <NavLink
@@ -31,7 +31,7 @@ const PrivateLinks = () => (
           activeClassName="Nav-link-active"
         >
           Watchlist
-    </NavLink>
+        </NavLink>
       </li>
       <li>
         <NavLink
@@ -41,17 +41,17 @@ const PrivateLinks = () => (
           activeClassName="Nav-link-active"
         >
           Account
-    </NavLink>
+        </NavLink>
       </li>
       <li>
         <Button
           variant="raised"
           color="secondary"
           type="button"
-          onClick={}
+          onClick={auth.signOut}
         >
           LOG OUT
-    </Button>
+        </Button>
       </li>
       {auth.isAuth() && (
         <li className={styles.user_panel}>
@@ -64,7 +64,7 @@ const PrivateLinks = () => (
         </li>
       )}
     </ul>
-  </ AppBar>
+  </AppBar>
 );
 
 const PublicLinks = () => (

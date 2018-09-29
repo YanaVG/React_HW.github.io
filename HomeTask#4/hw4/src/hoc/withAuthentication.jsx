@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import AuthUserContext from './authUserContext';
-import firebase from '../firebase';
+import { firebase } from '../firebase';
 
-const withAuthentication = WrappedComponent => 
+const withAuthentication = WrappedComponent =>
   class WithAuthentication extends Component {
     state = {
-      authUser: null, 
+      authUser: null,
     };
 
     componentDidMount() {
@@ -21,7 +21,7 @@ const withAuthentication = WrappedComponent =>
       const { authUser } = this.state;
       return (
         <AuthUserContext.Provider value={authUser}>
-          <WrappedComponent {...this.props}/>
+          <WrappedComponent {...this.props} />
         </AuthUserContext.Provider>
       );
     }

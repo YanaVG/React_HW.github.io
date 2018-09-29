@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Switch } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import Navigation from '../navigation';
 import ROUTES from '../../constants/routes';
