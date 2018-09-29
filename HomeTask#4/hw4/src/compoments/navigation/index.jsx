@@ -1,71 +1,76 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
 import * as routes from '../../constants/routes';
+import { auth } from '../../firebase';
 import styles from './style.css';
 
-const Navigation = () => <PublicLinks />
-// auth.currentUser() ? <PrivateLinks /> : <PublicLinks />;
+const Navigation = () =>
+  auth.currentUser() ? <PrivateLinks /> : <PublicLinks />;
 
 const PrivateLinks = () => (
-<ul className={styles.Nav}>
-  <li>
-    <NavLink
-      exact
-      to={routes.HOME}
-      style={styles.link}
-      className="Nav-link"
-      activeClassName="Nav-link-active"
-    >
-      Home
+  <AppBar position="fixed" color="default" className={styles.app_bar}>
+    <ul className={styles.Nav}>
+      <li>
+        <NavLink
+          exact
+          to={routes.HOME}
+          style={styles.link}
+          className="Nav-link"
+          activeClassName="Nav-link-active"
+        >
+          Home
     </NavLink>
-  </li>
-  <li>
-    <NavLink
-      to={routes.WATCHLIST}
-      style={styles.link}
-      className="Nav-link"
-      activeClassName="Nav-link-active"
-    >
-    Watchlist
-    </NavLink>
-  </li>
-  <li>
-    <NavLink
-      to={routes.ACCOUNT}
-      style={styles.link}
-      className="Nav-link"
-      activeClassName="Nav-link-active"
-    >
-    Account
-    </NavLink>
-  </li>
-  <li>
-    <Button
-      variant="raised"
-      color="secondary"
-      type="button"
-      onClick={}
-    >
-      LOG OUT
-    </Button>
-  </li>
-  {/* {auth.isAuth() && (
-      <li className={styles.user_panel}>
-        <h4>{auth.currentUser().displayName}</h4>
-        <img
-          src={auth.currentUser().photoURL}
-          className={styles.user_foto}
-          alt="profile foto"
-        />
       </li>
-    )} */}
-  </ul>
+      <li>
+        <NavLink
+          to={routes.WATCHLIST}
+          style={styles.link}
+          className="Nav-link"
+          activeClassName="Nav-link-active"
+        >
+          Watchlist
+    </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={routes.ACCOUNT}
+          style={styles.link}
+          className="Nav-link"
+          activeClassName="Nav-link-active"
+        >
+          Account
+    </NavLink>
+      </li>
+      <li>
+        <Button
+          variant="raised"
+          color="secondary"
+          type="button"
+          onClick={}
+        >
+          LOG OUT
+    </Button>
+      </li>
+      {auth.isAuth() && (
+        <li className={styles.user_panel}>
+          <h4>{auth.currentUser().displayName}</h4>
+          <img
+            src={auth.currentUser().photoURL}
+            className={styles.user_foto}
+            alt="profile foto"
+          />
+        </li>
+      )}
+    </ul>
+  </ AppBar>
 );
 
 const PublicLinks = () => (
-  <ul className={styles.Nav}>
-    <li>
+  <AppBar position="fixed" color="default" className={styles.app_bar}>
+    <ul className={styles.Nav}>
+      <li>
         <NavLink
           exact
           to={routes.HOME}
@@ -75,8 +80,8 @@ const PublicLinks = () => (
         >
           Home
         </NavLink>
-    </li>
-    <li>
+      </li>
+      <li>
         <NavLink
           to={routes.SIGN_IN}
           style={styles.link}
@@ -85,8 +90,9 @@ const PublicLinks = () => (
         >
           Sign in
         </NavLink>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </AppBar>
 );
 
 export default Navigation;
