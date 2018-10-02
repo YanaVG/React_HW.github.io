@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from '@material-ui/core/Input';
 import ButtonForm from '../../shared-ui/button-form';
-import { auth } from '@firebase-modules';
+import { auth } from '../../../firebase';
 import styles from './style.css';
 
 class ChangePasswordForm extends Component {
@@ -24,10 +24,10 @@ class ChangePasswordForm extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    
+
     this.setState({
-        passwordOne: '',
-        passwordTwo: '',
+      passwordOne: '',
+      passwordTwo: '',
     });
   };
 
@@ -41,14 +41,14 @@ class ChangePasswordForm extends Component {
       passwordOne: '',
       passwordTwo: '',
       error: null,
-    }  
+    };
   };
 
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
     const isDisabled = auth.isAuth();
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
-   
+
     return (
       <form onSubmit={this.onSubmit}>
         <Input
@@ -76,10 +76,10 @@ class ChangePasswordForm extends Component {
         />
         {isDisabled && (
           <p className={styles.warning_text}>
-            *This option is active only for signin with email users
+            *This option is active only for sign in with email users
           </p>
         )}
-         {error && <p className={styles.error_text}>{error.message}</p>}
+        {error && <p className={styles.error_text}>{error.message}</p>}
       </form>
     );
   }

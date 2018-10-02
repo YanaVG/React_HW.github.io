@@ -9,7 +9,7 @@ const withAuthentication = WrappedComponent =>
     };
 
     componentDidMount() {
-      firebase.auth.onAuthStateChange(
+      firebase.auth.onAuthStateChanged(
         authUser =>
           authUser
             ? this.setState({ authUser })

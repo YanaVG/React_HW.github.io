@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { getAllMovies } from '../../../redux/selectors';
 import { getMoviesByCategory } from '../../../redux/actions';
 import { getCategoryFromProps } from '../../../helpers';
 import { getAllMoviesWithCurrentGenre } from '../../../redux/selectors';

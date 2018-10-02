@@ -17,8 +17,8 @@ const PrivateLinks = () => (
           exact
           to={routes.HOME}
           style={styles.link}
-          className="Nav-link"
-          activeClassName="Nav-link-active"
+          className={styles.nav_link}
+          activeClassName={styles.nav_link__active}
         >
           Home
         </NavLink>
@@ -27,8 +27,8 @@ const PrivateLinks = () => (
         <NavLink
           to={routes.WATCHLIST}
           style={styles.link}
-          className="Nav-link"
-          activeClassName="Nav-link-active"
+          className={styles.nav_link}
+          activeClassName={styles.nav_link__active}
         >
           Watchlist
         </NavLink>
@@ -37,8 +37,8 @@ const PrivateLinks = () => (
         <NavLink
           to={routes.ACCOUNT}
           style={styles.link}
-          className="Nav-link"
-          activeClassName="Nav-link-active"
+          className={styles.nav_link}
+          activeClassName={styles.nav_link__active}
         >
           Account
         </NavLink>
@@ -75,8 +75,8 @@ const PublicLinks = () => (
           exact
           to={routes.HOME}
           style={styles.link}
-          className="Nav-link"
-          activeClassName="Nav-link-active"
+          className={styles.nav_link}
+          activeClassName={styles.nav_link__active}
         >
           Home
         </NavLink>
@@ -85,8 +85,8 @@ const PublicLinks = () => (
         <NavLink
           to={routes.SIGN_IN}
           style={styles.link}
-          className="Nav-link"
-          activeClassName="Nav-link-active"
+          className={styles.nav_link}
+          activeClassName={styles.nav_link__active}
         >
           Sign in
         </NavLink>

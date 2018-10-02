@@ -7,7 +7,7 @@ import {
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILURE,
   FETCH_MORE_MOVIES,
-  SET_TO_LOCALSTORAGE,
+  SET_FROM_DATABASE,
   CHANGE_FILTER,
 } from './types';
 
@@ -21,8 +21,8 @@ export const removeFromWatchlist = id => ({
   payload: id,
 });
 
-export const setToLocalStorage = watchList => ({
-  type: SET_TO_LOCALSTORAGE,
+export const setFromDatabase = watchList => ({
+  type: SET_FROM_DATABASE,
   payload: watchList,
 });
 

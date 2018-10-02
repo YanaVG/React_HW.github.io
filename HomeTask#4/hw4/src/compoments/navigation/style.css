@@ -37,12 +37,12 @@
   }
 }
 
-.Link {
+.nav_link {
   text-decoration: none;
   color: black;
   padding: 5px;
 }
-.LinkActive {
+.nav_link__active {
   font-weight: bolder;
   background-color: #f5f5f5;
 }

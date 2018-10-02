@@ -5,7 +5,7 @@ import styles from './style.css';
 const Trailer = ({ url }) => (
   <div className={styles.trailer_container}>
     <div className={styles.trailer_iframe}>
-      <iframe 
+      <iframe
         title="trailer"
         src={`https://www.youtybe.com/embed/${url}`}
         frameBorder="0"
@@ -17,11 +17,11 @@ const Trailer = ({ url }) => (
 );
 
 Trailer.propTypes = {
-    url: PropTypes.string,
+  url: PropTypes.string,
 };
 
 Trailer.defaultProps = {
-    url: '',
+  url: '',
 };
 
 export default Trailer;

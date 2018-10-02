@@ -7,7 +7,7 @@ const consfig = {
   authDomain: 'moviedb-919d5.firebaseapp.com',
   databaseURL: 'https://moviedb-919d5.firebaseio.com',
   projectId: 'moviedb-919d5',
-  storageBucket: '',
+  storageBucket: 'moviedb-919d5.appspot.com',
   messagingSenderId: '232348098303',
 };
 

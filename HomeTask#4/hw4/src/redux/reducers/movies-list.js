@@ -4,7 +4,7 @@ import {
   REMOVE_FROM_WATCHLIST,
   FETCH_MOVIES_SUCCESS,
   FETCH_MORE_MOVIES,
-  SET_TO_LOCALSTORAGE,
+  SET_FROM_DATABASE,
 } from '../types';
 
 const items = (state = [], { type, payload }) => {
@@ -24,7 +24,7 @@ const watchList = (state = [], { type, payload }) => {
       return [payload, ...state];
     case REMOVE_FROM_WATCHLIST:
       return state.filter(item => item.id !== payload);
-    case SET_TO_LOCALSTORAGE:
+    case SET_FROM_DATABASE:
       return payload;
     default:
       return state;

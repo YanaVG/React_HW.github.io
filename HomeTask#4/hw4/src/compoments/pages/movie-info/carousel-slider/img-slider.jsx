@@ -13,16 +13,11 @@ const ImagesSlider = ({ images }) => (
     className={styles.carousel_images}
   >
     {images.map((image, idx) => (
-        <img 
-          key={idx}
-          src={`${IMG_BASE}${image.file_path}`} 
-          alt="no image" />
+      <img key={String(idx)} src={`${IMG_BASE}${image.file_path}`} alt="no" />
     ))}
   </Carousel>
 );
 
-ImagesSlider.propTypes = {
-    images: PropTypes.arrayOf(Array).isRequired,
-};
+ImagesSlider.propTypes = { images: PropTypes.arrayOf(Array).isRequired };
 
 export default ImagesSlider;

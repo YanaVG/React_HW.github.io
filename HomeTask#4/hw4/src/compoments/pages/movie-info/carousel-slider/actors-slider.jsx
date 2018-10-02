@@ -14,15 +14,15 @@ const ActorsSlider = ({ actors }) => (
   >
     {actors.map(actor => (
       <div key={actor.cast_id}>
-        <img src={`${IMG_BASE}${actor.profile_path}`} alt="no actor photo" />
-        <p className={style.actor_name}>{actor.name}</p>
+        <img src={`${IMG_BASE}${actor.profile_path}`} alt="no actor" />
+        <p className={styles.actor_name}>{actor.name}</p>
       </div>
     ))}
   </Carousel>
 );
 
 ActorsSlider.propTypes = {
-    actors: PropTypes.arrayOf(Array).isRequired,
+  actors: PropTypes.arrayOf(Array).isRequired,
 };
 
 export default ActorsSlider;

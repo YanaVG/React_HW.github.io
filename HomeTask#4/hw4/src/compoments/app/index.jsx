@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
+import ScrollUpButton from 'react-scroll-up-button';
 import Navigation from '../navigation';
 import ROUTES from '../../constants/routes';
 import withAuthentication from '../../hoc/withAuthentication';
@@ -15,10 +16,11 @@ const App = () => (
           key={String(index)}
           path={route.path}
           exact={route.exact}
-          component={route.componenet}
+          component={route.component}
         />
       ))}
     </Switch>
+    <ScrollUpButton />
   </div>
 );
 

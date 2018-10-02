@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import withAuthorization from '../../../hoc/withAuthorization';
+import withAuthorization from '../../../hoc/withAuthentication';
 import AuthUserContext from '../../../hoc/authUserContext';
 import ChangePasswordForm from './passwort-change';
 import styles from './style.css';
@@ -12,7 +12,7 @@ const AccountPage = () => (
         <h1 className={styles.account_header}>
           Your account:
           <span className={styles.user_email}>
-            {authUser.email || authUser.displayName} 
+            {authUser.email || authUser.displayName}
           </span>
         </h1>
         <Card className={styles.accountForm}>

@@ -13,7 +13,7 @@ const withAuthorization = authCondition => WrappedComponent => {
 
     componentDidMount() {
       const { history } = this.props;
-      firebase.auth.onAuthStateChange(authUser => {
+      firebase.auth.onAuthStateChanged(authUser => {
         if (!authCondition(authUser)) {
           history.push(router.SIGN_IN);
         }
@@ -27,9 +27,9 @@ const withAuthorization = authCondition => WrappedComponent => {
         </AuthUserContext.Consumer>
       );
     }
-  };
+  }
 
-    return withRouter(WithAuthorization);
-}
+  return withRouter(WithAuthorization);
+};
 
 export default withAuthorization;

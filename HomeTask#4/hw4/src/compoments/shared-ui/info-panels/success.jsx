@@ -12,7 +12,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
   error: {
-    backgroundColor: green[600],
+    backgroundColor: green[500],
   },
   icon: {
     fontSize: 20,

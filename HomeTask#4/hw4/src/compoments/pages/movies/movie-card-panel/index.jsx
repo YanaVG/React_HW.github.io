@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter, NavLink } from 'react-router-dom';
-import AddButton from '../../../shared-ui/buttons/add-button';
-import InfoButton from '../../../shared-ui/buttons/info-button';
-import SnackBarError from '../../../shared-ui/info-panels/error';
 import { addToWatchlist } from '../../../../redux/actions';
 import { getAllMovies, getWatchList } from '../../../../redux/selectors';
 import { getItemById } from '../../../../helpers';
 import * as routes from '../../../../constants/routes';
-// import Icon from './icon';
-// import ICONS from '../../../shared-ui/icons';
+import AddButton from '../../../shared-ui/buttons/add-button';
+import InfoButton from '../../../shared-ui/buttons/info-button';
+import SnackBarError from '../../../shared-ui/info-panels/error';
+import { auth } from '../../../../firebase';
 import styles from '../movie-card/style.css';
 
 class MovieCardPanel extends Component {
@@ -35,11 +34,13 @@ class MovieCardPanel extends Component {
   }
 
   render() {
-    const { id, location } = this.props;
     const { isOpen } = this.state;
+    const { id, location } = this.props;
     return (
       <div className={styles.add_btn_panel}>
-        <AddButton onClick={() => this.addCardToList(id)} />
+        {auth.currentUser() && (
+          <AddButton onClick={() => this.addCardToList(id)} />
+        )}
         <NavLink
           to={{
             pathname: `${routes.MOVIES}/${id}`,

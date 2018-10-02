@@ -8,7 +8,7 @@ import styles from './style.css';
 
 const styleBar = theme => ({
   snackbar: {
-    margin: theme.spacing.unit, 
+    margin: theme.spacing.unit,
   },
 });
 
@@ -16,9 +16,9 @@ class ButtonForm extends Component {
   state = { isOpen: false };
 
   toggleSnackBar = () => {
-    this.setState( prevState => ({
-        isOpen: !prevState.isOpen,
-    })); 
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }));
   };
 
   render() {
@@ -61,5 +61,5 @@ ButtonForm.propTypes = {
   disabled: PropTypes.bool.isRequired,
   classes: PropTypes.objectOf(Object).isRequired,
 };
-  
+
 export default withStyles(styleBar)(ButtonForm);

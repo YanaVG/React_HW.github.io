@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import * as routes from '../../../../constants/routes';
 import { removeFromWatchlist } from '../../../../redux/actions';
-import ICONS from '../../../shared-ui/icons';
-import Icon from './icon';
+import InfoBtn from '../../../shared-ui/buttons/info-button';
+import DelBtn from '../../../shared-ui/buttons/del-button';
 import styles from './style.css';
 
 const URL = 'http://image.tmdb.org/t/p/w300';
@@ -19,7 +19,7 @@ const WatchItem = ({
   vote_average: voteAvaradge,
   removeCard,
   location,
-  // show,
+  show,
 }) => (
   <div className={styles.watch_item}>
     <div className={styles.wrap_img}>
@@ -31,13 +31,12 @@ const WatchItem = ({
       <p className={styles.voteAvaradge}>Vote Avaradge: {voteAvaradge}</p>
       <div className={styles.button_panel}>
         <div className={styles.wrap_button}>
-          <button
-            type="button"
-            className={styles.btn_del}
-            onClick={() => removeCard(id)}
-          >
-            <Icon icon={ICONS.delete} />
-          </button>
+          <DelBtn
+            onClick={() => {
+              removeCard(id);
+              show();
+            }}
+          />
           <NavLink
             to={{
               pathname: `${routes.MOVIES}/${id}`,
@@ -45,13 +44,7 @@ const WatchItem = ({
               state: { from: location },
             }}
           >
-            <button
-              type="button"
-              className={styles.btn_info}
-              // onClick={() => toggleModal(id)}
-            >
-              <Icon icon={ICONS.info} />
-            </button>
+            <InfoBtn />
           </NavLink>
         </div>
       </div>
@@ -67,7 +60,7 @@ WatchItem.propTypes = {
   vote_average: PropTypes.number.isRequired,
   removeCard: PropTypes.func.isRequired,
   location: PropTypes.objectOf(Object).isRequired,
-  // show: PropTypes.func.isRequired,
+  show: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProp = {

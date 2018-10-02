@@ -21,7 +21,7 @@ const DelButton = ({ classes, onClick }) => (
       variant="fab"
       color="secondary"
       className={classes.button}
-      onClick={onClick} 
+      onClick={onClick}
     >
       <DeleteIcon />
     </Button>
@@ -30,7 +30,7 @@ const DelButton = ({ classes, onClick }) => (
 
 DelButton.propTypes = {
   classes: PropTypes.objectOf(Object).isRequired,
-  onClick: PropTypes.function.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(DelButton);

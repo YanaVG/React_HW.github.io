@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import * as routes from '../../../constants/routes';
 import styles from './style.css';
@@ -15,7 +16,6 @@ class SignInPage extends Component {
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
       firebase.auth.GithubAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
@@ -24,19 +24,19 @@ class SignInPage extends Component {
         history.push(routes.HOME);
       },
     },
-  }
+  };
 
   render() {
-      return (
-        <div className={styles.signIn_container}>
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        </div>
-      )
+    return (
+      <div className={styles.signIn_container}>
+        <StyledFirebaseAuth
+          uiConfig={this.uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </div>
+    );
   }
-};
+}
 
 SignInPage.propTypes = {
   history: PropTypes.objectOf(Object).isRequired,
