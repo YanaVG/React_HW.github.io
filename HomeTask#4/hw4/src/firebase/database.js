@@ -7,6 +7,6 @@ export const createUser = (id, username, email) =>
 export const onceGetUsers = () => database.ref('users').once('value');
 
 export const updateUser = (data, id) =>
-  database.ref(`users/${id}`).updata(data);
+  database.ref(`users/${id}`).update(data);
 
 export const getUserData = id => database.ref(`users/${id}`).once('value');

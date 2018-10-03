@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
-// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import * as routes from '../../../constants/routes';
 import styles from './style.css';

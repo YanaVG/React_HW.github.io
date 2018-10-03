@@ -3,6 +3,8 @@
     position: relative;
     width: 64px;
     height: 64px;
+    margin-left: 40%;
+    margin-top: 20%;
   }
 
   .lds_hourglass:after {
