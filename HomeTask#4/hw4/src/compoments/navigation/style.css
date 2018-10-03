@@ -95,3 +95,15 @@
       transition: transform 300ms ease-in;
     }
   }
+
+  .app_bar {
+    margin-bottom: 10px;
+    position: static !important;
+    /* background-color: aquamarine; */
+  }
+  @media (min-width: 768px) {
+    .app_bar {
+      margin-bottom: 0;
+      position: fixed !important;
+    }
+  }
